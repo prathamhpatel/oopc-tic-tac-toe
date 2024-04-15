@@ -28,6 +28,6 @@ bool isGameOver(char board[][BOARD_SIZE], char symbol) {
 
   // Check diagonals for a win
 if(board [0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol)
-return true;//diagonal from top-rigth and bottom-left
+return true;//diagonal from top-right and bottom-left
 
 if(board [0][2] == symbol && board[1]]1] == symbol && board 
