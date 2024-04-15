@@ -30,4 +30,33 @@ bool isGameOver(char board[][BOARD_SIZE], char symbol) {
 if(board [0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol)
 return true;//diagonal from top-right and bottom-left
 
-if(board [0][2] == symbol && board[1]]1] == symbol && board 
+if(board [0][2] == symbol && board[1]][1] == symbol && board[2][0] ==  symbol)
+return true;//diagonal from top-right and bottom-left
+
+// Check for a draw (full board with no winner)
+    bool isFull = true;
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            if (board[i][j] != 'X' && board[i][j] != 'O') {
+                isFull = false;
+                break;
+            }
+        }
+    }
+    return isFull;
+}
+// Function to handle player's move
+void playerMove(char board[][BOARD_SIZE], char symbol) {
+    int row, col;
+    cout << "Player '" << symbol << "', enter your move (row and column): ";
+    cin >> row >> col;
+
+    // Validate the input and update the board
+    if (row >= 0 && row < BOARD_SIZE && col >= 0 && col < BOARD_SIZE && board[row][col] == ' ') {
+        board[row][col] = symbol;
+    } else {
+        cout << "Invalid move. Try again." << endl;
+        playerMove(board, symbol); // Recursively retry until a valid move is made
+    }
+}
+
