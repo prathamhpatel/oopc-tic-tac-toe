@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+
+const int BOARD_SIZE = 3;
+
+// Function to Boarday the Tic Tac Toe board
+void BoardayBoard(char board[][BOARD_SIZE]) {
+    cout << "-------------" << endl;
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        cout << "| ";
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            cout << board[i][j] << " | ";
+        }
+        cout << endl << "-------------" << endl;
+    }
+}
+
+// Function to check if the game is over (win or draw)
+bool isGameOver(char board[][BOARD_SIZE], char symbol) {
+    // Check rows and columns for a win
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        if (board[i][0] == symbol && board[i][1] == symbol && board[i][2] == symbol)
+            return true; // Row win
+        if (board[0][i] == symbol && board[1][i] == symbol && board[2][i] == symbol)
+            return true; // Column win
+    }
+
+  // Check diagonals for a win
+  if (board[0][0] == symbol && board[1][1] == symbol && board[2][2] == symbol)
+      return true; // Diagonal from top-left to bottom-right
+  if (board[0][2] == symbol && board[1][1] == symbol && board[2][0] == symbol)
+      return true; // Diagonal from top-right to bottom-left
