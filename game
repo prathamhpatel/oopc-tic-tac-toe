@@ -58,5 +58,37 @@ void playerMove(char board[][BOARD_SIZE], char symbol) {
         cout << "Invalid move. Try again." << endl;
         playerMove(board, symbol); // Recursively retry until a valid move is made
     }
+} 
+int main() {
+    char board[BOARD_SIZE][BOARD_SIZE];
+
+    // Initialize the board
+    for (int i = 0; i < BOARD_SIZE; ++i) {
+        for (int j = 0; j < BOARD_SIZE; ++j) {
+            board[i][j] = ' '; // Use space to indicate empty cell
+        }
+    }
+
+    char currentPlayer = 'X'; // Player 'X' starts first
+   // Game loop
+    while (true) {
+        displayBoard(board);
+
+        // Player's move
+        playerMove(board, currentPlayer);
+
+        // Check if the game is over
+        if (isGameOver(board, currentPlayer)) {
+            displayBoard(board);
+            cout << "Player '" << currentPlayer << "' wins!" << endl;
+            break; // Exit the game loop
+        }
+
+        // Switch player
+        currentPlayer = (currentPlayer == 'X') ? 'O' : 'X';
+    }
+
+    return 0;
 }
+
 
